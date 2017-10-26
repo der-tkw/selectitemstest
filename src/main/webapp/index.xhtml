@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>SelectItems Test</title>
+</h:head>
+<h:body>
+    <h2>SelectItems Test</h2>
+    <h:form>
+        <div>
+            <h:outputText value="JSF Select One Menu"/>
+            <h:selectOneMenu id="jsfSelectOneMenu" value="#{selectItemsBean.value1}">
+                <f:ajax execute="@this" render="@this value1"/>
+                <f:selectItems value="#{selectItemsBean.items}"/>
+            </h:selectOneMenu>
+            <h:outputText id="value1" value="#{selectItemsBean.value1}"/>
+        </div>
+        <div>
+            <h:outputText value="PF Select One Menu"/>
+            <p:selectOneMenu id="pfSelectOneMenu" value="#{selectItemsBean.value2}">
+                <p:ajax process="@this" update="@this value2"/>
+                <f:selectItems value="#{selectItemsBean.items}"/>
+            </p:selectOneMenu>
+            <h:outputText id="value2" value="#{selectItemsBean.value2}"/>
+        </div>
+        <div>
+            <h:outputText value="PF Select One Menu (Editable)"/>
+            <p:selectOneMenu id="pfSelectOneMenuEditable" value="#{selectItemsBean.value3}" editable="true">
+                <p:ajax process="@this" update="@this value3"/>
+                <f:selectItems value="#{selectItemsBean.items}"/>
+            </p:selectOneMenu>
+            <h:outputText id="value3" value="#{selectItemsBean.value3}"/>
+        </div>
+    </h:form>
+</h:body>
+</html>
